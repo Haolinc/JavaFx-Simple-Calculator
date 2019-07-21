@@ -159,10 +159,13 @@ public class SimpleFxCal extends Application {
     neg.setOnAction(new EventHandler<ActionEvent>(){
       @Override
       public void handle(ActionEvent e){
+        if (text.getText().equals("")) {
+          System.out.println ("Invalid");
+          return;
+        }
         if (seeIfErrorOperation(text.getText()) &&
         text.getText(text.getLength()-1, text.getLength()).equals(")")==false) {
           System.out.println ("Invalid");
-          return;
         }
         int i= findOperation(text.getText());
         if (seeIfOperation(text.getText()) == false) {
@@ -191,7 +194,10 @@ public class SimpleFxCal extends Application {
     dot.setOnAction(new EventHandler<ActionEvent>(){
       @Override
       public void handle(ActionEvent e){
-        if (seeIfErrorOperation(text.getText())) {
+        if (text.getText().equals("")) {
+          System.out.println ("Invalid");
+        }
+        else if (seeIfErrorOperation(text.getText())) {
           System.out.println ("Invalid");
         }
         else if (seeIfTooMuchDots(text.getText())) {
@@ -211,8 +217,11 @@ public class SimpleFxCal extends Application {
     plus.setOnAction(new EventHandler<ActionEvent>(){
       @Override
       public void handle(ActionEvent e){
-        if (seeIfErrorOperation(text.getText())) {
-          System.out.println ("Error");
+        if (text.getText().equals("")) {
+          System.out.println ("Invalid");
+        }
+        else if (seeIfErrorOperation(text.getText())) {
+          System.out.println ("Invalid");
         }
         else if (seeIfOperation(text.getText())) {
           text.setText(calculate(text.getText())+"+");
@@ -230,8 +239,11 @@ public class SimpleFxCal extends Application {
     minus.setOnAction(new EventHandler<ActionEvent>(){
       @Override
       public void handle(ActionEvent e){
-        if (seeIfErrorOperation(text.getText())) {
-          System.out.println ("Error");
+        if (text.getText().equals("")) {
+          System.out.println ("Invalid");
+        }
+        else if (seeIfErrorOperation(text.getText())) {
+          System.out.println ("Invalid");
         }
         else if (seeIfOperation(text.getText())) {
           text.setText(calculate(text.getText())+"-");
@@ -249,8 +261,11 @@ public class SimpleFxCal extends Application {
     times.setOnAction(new EventHandler<ActionEvent>(){
       @Override
       public void handle(ActionEvent e){
-        if (seeIfErrorOperation(text.getText())) {
-          System.out.println ("Error");
+        if (text.getText().equals("")) {
+          System.out.println ("Invalid");
+        }
+        else if (seeIfErrorOperation(text.getText())) {
+          System.out.println ("Invalid");
         }
         else if (seeIfOperation(text.getText())) {
           text.setText(calculate(text.getText())+"*");
@@ -268,8 +283,11 @@ public class SimpleFxCal extends Application {
     divide.setOnAction(new EventHandler<ActionEvent>(){
       @Override
       public void handle(ActionEvent e){
-        if (seeIfErrorOperation(text.getText())) {
-          System.out.println ("Error");
+        if (text.getText().equals("")) {
+          System.out.println ("Invalid");
+        }
+        else if (seeIfErrorOperation(text.getText())) {
+          System.out.println ("Invalid");
         }
         else if (seeIfOperation(text.getText())) {
           text.setText(calculate(text.getText())+"/");
@@ -287,6 +305,10 @@ public class SimpleFxCal extends Application {
     equal.setOnAction(new EventHandler<ActionEvent>(){
       @Override
       public void handle(ActionEvent e){
+        if (seeIfErrorOperation(text.getText())) {
+          System.out.println ("Invalid");
+          return;
+        }
         text.setText(calculate(text.getText()));
       }
     });
