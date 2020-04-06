@@ -1,3 +1,6 @@
+//A simple calculator made by javafx.
+//Only support +-*/, and only do calculation one by one.
+//Only support clicking on the button.
 import javafx.application.Application;
 import javafx.scene.control.Button;
 import javafx.scene.control.Control;
@@ -16,16 +19,14 @@ public class SimpleFxCal extends Application {
   public void start (Stage primaryStage) throws Exception {
     Double storeVal = new Double(0);
 
+    //Display what have been entered and result
     TextField text = new TextField();
     text.setEditable(false);
     text.setPrefSize(200, 100);
     text.setFont(new Font(30));
 
     Button numb1 = new Button("1");
-    numb1.setPrefHeight(50);
-    numb1.setPrefWidth(50);
-    numb1.setLayoutY(300);
-    numb1.setLayoutX(0);
+    buttonEdit(numb1, 50, 50, 300, 0);
     numb1.setOnAction(new EventHandler<ActionEvent>(){
       @Override
       public void handle(ActionEvent e){
@@ -35,10 +36,7 @@ public class SimpleFxCal extends Application {
     });
 
     Button numb2 = new Button("2");
-    numb2.setPrefHeight(50);
-    numb2.setPrefWidth(50);
-    numb2.setLayoutY(300);
-    numb2.setLayoutX(50);
+    buttonEdit(numb2, 50, 50, 300, 50);
     numb2.setOnAction(new EventHandler<ActionEvent>(){
       @Override
       public void handle(ActionEvent e){
@@ -48,10 +46,7 @@ public class SimpleFxCal extends Application {
     });
 
     Button numb3 = new Button("3");
-    numb3.setPrefHeight(50);
-    numb3.setPrefWidth(50);
-    numb3.setLayoutY(300);
-    numb3.setLayoutX(100);
+    buttonEdit(numb3, 50, 50, 300, 100);
     numb3.setOnAction(new EventHandler<ActionEvent>(){
       @Override
       public void handle(ActionEvent e){
@@ -61,10 +56,7 @@ public class SimpleFxCal extends Application {
     });
 
     Button numb4 = new Button("4");
-    numb4.setPrefHeight(50);
-    numb4.setPrefWidth(50);
-    numb4.setLayoutY(250);
-    numb4.setLayoutX(0);
+    buttonEdit(numb4, 50, 50, 250, 0);
     numb4.setOnAction(new EventHandler<ActionEvent>(){
       @Override
       public void handle(ActionEvent e){
@@ -74,10 +66,7 @@ public class SimpleFxCal extends Application {
     });
 
     Button numb5 = new Button("5");
-    numb5.setPrefHeight(50);
-    numb5.setPrefWidth(50);
-    numb5.setLayoutY(250);
-    numb5.setLayoutX(50);
+    buttonEdit(numb5, 50, 50, 250, 50);
     numb5.setOnAction(new EventHandler<ActionEvent>(){
       @Override
       public void handle(ActionEvent e){
@@ -87,10 +76,7 @@ public class SimpleFxCal extends Application {
     });
 
     Button numb6 = new Button("6");
-    numb6.setPrefHeight(50);
-    numb6.setPrefWidth(50);
-    numb6.setLayoutY(250);
-    numb6.setLayoutX(100);
+    buttonEdit(numb6, 50, 50, 250, 100);
     numb6.setOnAction(new EventHandler<ActionEvent>(){
       @Override
       public void handle(ActionEvent e){
@@ -100,10 +86,7 @@ public class SimpleFxCal extends Application {
     });
 
     Button numb7 = new Button("7");
-    numb7.setPrefHeight(50);
-    numb7.setPrefWidth(50);
-    numb7.setLayoutY(200);
-    numb7.setLayoutX(0);
+    buttonEdit(numb7, 50, 50, 200, 0);
     numb7.setOnAction(new EventHandler<ActionEvent>(){
       @Override
       public void handle(ActionEvent e){
@@ -113,10 +96,7 @@ public class SimpleFxCal extends Application {
     });
 
     Button numb8 = new Button("8");
-    numb8.setPrefHeight(50);
-    numb8.setPrefWidth(50);
-    numb8.setLayoutY(200);
-    numb8.setLayoutX(50);
+    buttonEdit(numb8, 50, 50, 200, 50);
     numb8.setOnAction(new EventHandler<ActionEvent>(){
       @Override
       public void handle(ActionEvent e){
@@ -126,10 +106,7 @@ public class SimpleFxCal extends Application {
     });
 
     Button numb9 = new Button("9");
-    numb9.setPrefHeight(50);
-    numb9.setPrefWidth(50);
-    numb9.setLayoutY(200);
-    numb9.setLayoutX(100);
+    buttonEdit(numb9, 50, 50, 200, 100);
     numb9.setOnAction(new EventHandler<ActionEvent>(){
       @Override
       public void handle(ActionEvent e){
@@ -139,10 +116,7 @@ public class SimpleFxCal extends Application {
     });
 
     Button numb0 = new Button("0");
-    numb0.setPrefHeight(50);
-    numb0.setPrefWidth(50);
-    numb0.setLayoutY(350);
-    numb0.setLayoutX(50);
+    buttonEdit(numb0, 50, 50, 350, 50);
     numb0.setOnAction(new EventHandler<ActionEvent>(){
       @Override
       public void handle(ActionEvent e){
@@ -152,10 +126,7 @@ public class SimpleFxCal extends Application {
     });
 
     Button neg = new Button("+-");
-    neg.setPrefHeight(50);
-    neg.setPrefWidth(50);
-    neg.setLayoutY(350);
-    neg.setLayoutX(0);
+    buttonEdit(neg, 50, 50, 350, 0);
     neg.setOnAction(new EventHandler<ActionEvent>(){
       @Override
       public void handle(ActionEvent e){
@@ -187,10 +158,7 @@ public class SimpleFxCal extends Application {
     });
 
     Button dot = new Button(".");
-    dot.setPrefHeight(50);
-    dot.setPrefWidth(50);
-    dot.setLayoutY(350);
-    dot.setLayoutX(100);
+    buttonEdit(dot, 50, 50, 350, 100);
     dot.setOnAction(new EventHandler<ActionEvent>(){
       @Override
       public void handle(ActionEvent e){
@@ -210,10 +178,7 @@ public class SimpleFxCal extends Application {
     });
 
     Button plus = new Button("+");
-    plus.setPrefHeight(50);
-    plus.setPrefWidth(50);
-    plus.setLayoutY(150);
-    plus.setLayoutX(150);
+    buttonEdit(plus, 50, 50, 150, 150);
     plus.setOnAction(new EventHandler<ActionEvent>(){
       @Override
       public void handle(ActionEvent e){
@@ -232,10 +197,7 @@ public class SimpleFxCal extends Application {
     });
 
     Button minus = new Button("-");
-    minus.setPrefHeight(50);
-    minus.setPrefWidth(50);
-    minus.setLayoutY(200);
-    minus.setLayoutX(150);
+    buttonEdit(minus, 50, 50, 200, 150);
     minus.setOnAction(new EventHandler<ActionEvent>(){
       @Override
       public void handle(ActionEvent e){
@@ -254,10 +216,7 @@ public class SimpleFxCal extends Application {
     });
 
     Button times = new Button("*");
-    times.setPrefHeight(50);
-    times.setPrefWidth(50);
-    times.setLayoutY(250);
-    times.setLayoutX(150);
+    buttonEdit(times, 50, 50, 250, 150);
     times.setOnAction(new EventHandler<ActionEvent>(){
       @Override
       public void handle(ActionEvent e){
@@ -276,10 +235,7 @@ public class SimpleFxCal extends Application {
     });
 
     Button divide = new Button("/");
-    divide.setPrefHeight(50);
-    divide.setPrefWidth(50);
-    divide.setLayoutY(300);
-    divide.setLayoutX(150);
+    buttonEdit(divide, 50, 50, 350, 150);
     divide.setOnAction(new EventHandler<ActionEvent>(){
       @Override
       public void handle(ActionEvent e){
@@ -298,10 +254,7 @@ public class SimpleFxCal extends Application {
     });
 
     Button equal = new Button("=");
-    equal.setPrefHeight(50);
-    equal.setPrefWidth(50);
-    equal.setLayoutY(350);
-    equal.setLayoutX(150);
+    buttonEdit(equal, 50, 50, 350, 150);
     equal.setOnAction(new EventHandler<ActionEvent>(){
       @Override
       public void handle(ActionEvent e){
@@ -314,10 +267,7 @@ public class SimpleFxCal extends Application {
     });
 
     Button delete = new Button("<-");
-    delete.setPrefHeight(50);
-    delete.setPrefWidth(50);
-    delete.setLayoutY(150);
-    delete.setLayoutX(100);
+    buttonEdit(delete, 50, 50, 150, 100);
     delete.setOnAction(new EventHandler<ActionEvent>(){
       @Override
       public void handle(ActionEvent e){
@@ -331,10 +281,7 @@ public class SimpleFxCal extends Application {
     });
 
     Button clear = new Button("C");
-    clear.setPrefHeight(50);
-    clear.setPrefWidth(50);
-    clear.setLayoutY(150);
-    clear.setLayoutX(50);
+    buttonEdit(clear, 50, 50, 150, 50);
     clear.setOnAction(new EventHandler<ActionEvent>(){
       @Override
       public void handle(ActionEvent e){
@@ -450,6 +397,7 @@ public class SimpleFxCal extends Application {
     return text;
   }
 
+  //Check if there is operator
   public boolean seeIfOperation (String text) {
     for (int i=1; i<text.length(); i++) {
       if (text.substring(i, i+1).equals("+") ||
@@ -461,6 +409,7 @@ public class SimpleFxCal extends Application {
     return false;
   }
 
+  //Find out operator
   public int findOperation (String text) {
     for (int i=1; i<text.length(); i++) {
       if (text.substring(i, i+1).equals("+") ||
@@ -479,6 +428,7 @@ public class SimpleFxCal extends Application {
       return true;
   }
 
+  //Check for dots error
   public boolean seeIfTooMuchDots (String text) {
     int countDot=0;
     int countOp=0;
@@ -497,5 +447,12 @@ public class SimpleFxCal extends Application {
       return false;
     else
       return true;
+  }
+
+  public void buttonEdit (Button button, int height, int width, int y, int x) {
+    button.setPrefHeight(height);
+    button.setPrefWidth(width);
+    button.setLayoutY(y);
+    button.setLayoutX(x);
   }
 }
